@@ -1,0 +1,10 @@
+{:paths   ["src" "resources"]
+ :deps    {org.clojure/clojure    {:mvn/version "1.10.1"}
+           org.clojure/core.async {:mvn/version "1.2.603"}}
+ :aliases {
+           :jar     {:extra-deps {seancorfield/depstar {:mvn/version "0.5.2"}}
+                     :main-opts  ["-m" "hf.depstar.jar" "tlight.spin.jar"]}
+           :install {:extra-deps {deps-deploy {:mvn/version "0.0.9"}}
+                     :main-opts  ["-m" "deps-deploy.deps-deploy" "install" "tlight.spin.jar"]}
+           :deploy  {:extra-deps {deps-deploy {:mvn/version "0.0.9"}}
+                     :main-opts  ["-m" "deps-deploy.deps-deploy" "deploy" "tlight.spin.jar"]}}}
