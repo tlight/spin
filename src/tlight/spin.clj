@@ -22,14 +22,19 @@
 (def done? (atom (chan)))
 
 (defn spin [& {:keys [type template ms]
-               :or   {type :box1 template "\u001b[1000D %s" ms 200}}]
+               :or   {type :box1 template "%s" ms 100}}]
   "The spin function loops a spinner to STDOUT until a call to (done)"
   (let [s      (get strings type)
-        length (count s)]
+        length (count s)
+        ]
     (go-loop [i 0]
       (let [c   (get s i)
-            i++ (mod (+ i 1) length)]
-        (printf template c)
+            i++ (mod (+ i 1) length)
+            out (format template c)
+            pre (format "\u001b[%sD" (count out))
+            ]
+        (print (str pre out))
+        (flush)
         (alt!
           @done? :done
           (timeout ms) (recur i++))))))
