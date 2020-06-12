@@ -23,13 +23,13 @@ ASCII spinner library for long running terminal operations.
 [deps.edn](https://clojure.org/reference/deps_and_cli) dependency information:
 
 ```clj
-  tlight/spin {:mvn/version "0.0.1"}
+  tlight/spin {:mvn/version "0.0.2"}
   ```
 
 [Leiningen](https://github.com/technomancy/leiningen) dependency information:
 
 ```clj
- [tlight/spin "0.0.1"]
+ [tlight/spin "0.0.2"]
 ```
 
 [Maven](http://maven.apache.org/) dependency information:
@@ -38,7 +38,7 @@ ASCII spinner library for long running terminal operations.
 <dependency>
   <groupId>tlight</groupId>
   <artifactId>spin</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.2</version>
 </dependency>
 ```
 
