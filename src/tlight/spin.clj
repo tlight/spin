@@ -1,5 +1,5 @@
 (ns tlight.spin
-  (:require [clojure.core.async :as async :refer [<! >! >!! timeout chan alts! go go-loop]]))
+  (:require [clojure.core.async :as async :refer [<! >! <!! >!! timeout chan alts! go go-loop]]))
 
 (def spinners {:box1  "⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏"
                :box2  "⠋⠙⠚⠞⠖⠦⠴⠲⠳⠓"
@@ -18,12 +18,17 @@
                :spin8 "■□▪▫"
                :spin9 "←↑→↓"})
 
-(def done? (atom (chan)))
-(defn done [] (>!! @done? true))
+(def port (chan))
+
+(defn done []
+  (>!! port :done)
+  (<!! port))
+
 (defn ok []
   (locking *out*
     (print "✓")
-    (flush)))
+    (flush)
+    (>!! port :ok)))
 
 (defn blit [frame]
   (locking *out*
@@ -39,8 +44,8 @@
     (go-loop [i 0]
       (let [frame   (get frames i)
             i++     (mod (+ i 1) length)
-            [val _] (alts! [@done? (timeout ms)])]
-        (if val
+            [msg _] (alts! [port (timeout ms)])]
+        (if (= msg :done)
           (ok)
           (do
             (blit frame)
