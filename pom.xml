@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>tlight</groupId>
   <artifactId>spin</artifactId>
-  <version>0.0.2</version>
+  <version>0.0.3</version>
   <name>spin</name>
   <description>ASCII spinner library for long running terminal operations.</description>
   <url>https://github.com/tlight/spin</url>
