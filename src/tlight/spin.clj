@@ -25,16 +25,14 @@
   (<!! port))
 
 (defn ok []
-  (locking *out*
-    (print "✓")
-    (flush)
-    (>!! port :ok)))
+  (print "✓")
+  (flush)
+  (>!! port :ok))
 
 (defn blit [frame]
-  (locking *out*
-    (print frame)
-    (flush)
-    (print "\033[1D")))
+  (print frame)
+  (flush)
+  (print "\033[1D"))
 
 (defn spin [& {:keys [type ms]
                :or   {type :box1, ms 100}}]
