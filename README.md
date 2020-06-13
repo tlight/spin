@@ -13,12 +13,17 @@ ASCII spinner library for long running terminal operations.
 (spin)
 (work)
 (done)
+
+; :type  style - defaults to :box1 | Options :box1 to :box7, :spin1 to :spin9
+; :ms    delay - defaults to 100 ms
+(spin :type :box1 :ms 100) 
 ```
 
-```clj
-(spin :type :box1)
-(spin :type :box1 :ms 500)
-```
+## Example
+
+![](https://raw.githubusercontent.com/tlight/spin/master/spin.gif)
+
+## Installation
 
 [deps.edn](https://clojure.org/reference/deps_and_cli) dependency information:
 
