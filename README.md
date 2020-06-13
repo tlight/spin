@@ -16,8 +16,8 @@ ASCII spinner library for long running terminal operations.
 ```
 
 ```clj
-(spin :style :box1 )
-(spin :style :box1 :ms 500)
+(spin :type :box1)
+(spin :type :box1 :ms 500)
 ```
 
 [deps.edn](https://clojure.org/reference/deps_and_cli) dependency information:
